@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiong.mapper.NewListMapper">
+    <update id="updateClick" parameterType="int">
+        UPDATE newlist SET click=click+1 WHERE id=#{id}
+    </update>
+    <select id="findNewInfo" parameterType="int" resultType="com.xiong.model.NewList">
+        SELECT * FROM newlist WHERE id=#{id}
+    </select>
+    <select id="findAllNewList" resultType="com.xiong.model.NewList">
+        SELECT * FROM newlist ORDER BY id DESC
+    </select>
+</mapper>

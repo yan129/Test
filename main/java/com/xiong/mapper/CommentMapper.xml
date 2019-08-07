@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiong.mapper.CommentMapper">
+    <insert id="addComment" parameterType="com.xiong.model.Comment">
+        INSERT INTO comment(id,newlist_id,user,add_time,body)
+            VALUES(#{id},#{newlist_id},#{user},#{add_time},#{body})
+    </insert>
+    <select id="findComment" parameterType="int" resultType="com.xiong.model.Comment">
+        select comment.* from comment,newlist where
+        comment.newlist_id=newlist.id and newlist.id=#{id} limit #{start},#{page_size}
+    </select>
+</mapper>
